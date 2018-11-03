@@ -1,5 +1,6 @@
 Ecommerce API:
     ✔ Install REST API @done(18-11-03 15:58)
+    ☐ Create ERD
 
     UserManager:
         Register user:
@@ -22,5 +23,5 @@ Ecommerce API:
     ProductManager:
         ☐ Get categories
         ☐ Get products by category
-        ☐ Get product details by id 
+        ☐ Get product details by id
         ☐ Get featured products
