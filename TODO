@@ -1,6 +1,6 @@
 Ecommerce API:
     ✔ Install REST API @done(18-11-03 15:58)
-    ☐ Create ERD
+    ✔ Create ERD @done(18-11-03 17:19)
 
     UserManager:
         Register user:
