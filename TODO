@@ -24,7 +24,10 @@ Ecommerce API:
         Get categories:
             ✔ Get categories @done(18-11-04 12:20)
             ☐ Get categories in tree
-            
+
         ☐ Get products by category
         ☐ Get product details by id
         ☐ Get featured products
+
+    Bugs & Fixes:
+        ☐ Change thumbnail in model Product to foreign key to image
