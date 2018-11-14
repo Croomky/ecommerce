@@ -28,6 +28,9 @@ class Image(models.Model):
     def __str__(self):
         return self.product.__str__() + ' img'
 
+class FeaturedProduct(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+
 admin.site.register(Category)
 admin.site.register(Product)
 admin.site.register(Image)
