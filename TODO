@@ -1,5 +1,11 @@
 Ecommerce API:
     ✔ Install REST API @done(18-11-03 15:58)
+    ✔ Create ERD @done(18-11-03 17:19)
+    Populate database with example info:
+        ☐ Categories
+        ☐ Products
+        ☐ Featured products
+        ☐ Slider/sale/ads ???
 
     UserManager:
         Register user:
@@ -20,7 +26,13 @@ Ecommerce API:
             ☐ Reset a password (after providing proper token)
 
     ProductManager:
-        ☐ Get categories
+        Get categories:
+            ✔ Get categories @done(18-11-04 12:20)
+            ☐ Get categories in tree
+
         ☐ Get products by category
-        ☐ Get product details by id 
+        ☐ Get product details by id
         ☐ Get featured products
+
+    Bugs & Fixes:
+        ☐ Change thumbnail in model Product to foreign key to image
