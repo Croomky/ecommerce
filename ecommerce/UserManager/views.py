@@ -1,7 +1,9 @@
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from .components import SendActivationLink
+from .models import ActivationCode
 
 def signup(request):
     if request.method == 'POST':
@@ -12,6 +14,7 @@ def signup(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
             login(request, user)
+            SendActivationLink(user)
             return redirect('mainPage')
         else:
             return redirect('signup')
@@ -27,4 +30,16 @@ def signin(request):
         if user is not None:
             login(request, user)
 
+    return redirect('mainPage')
+
+def activate(request, code):
+    currentCode = ActivationCode.objects.get(code=code)
+    currentCode.delete()
+    return HttpResponse('Your account was activated')
+
+def userProfile(request):
+    return HttpResponse('Your profile')
+
+def signout(request):
+    logout(request)
     return redirect('mainPage')

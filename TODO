@@ -9,16 +9,16 @@ Ecommerce API:
 
     UserManager:
         Register user:
-            ☐ Validate input data
-            ☐ Save new user to db
-            ☐ Send activation link
+            ✔ Validate input data @done(18-11-16 17:23)
+            ✔ Save new user to db @done(18-11-16 17:23)
+            ✔ Send activation link @done(18-11-21 14:02)
         Login user:
             ☐ Authenticate using (email or login) and password
-            ☐ Start session
+            ✔ Start session @done(18-11-21 14:02)
         Activate new account by email:
-            ☐ Generate token
-            ☐ Insert it into db
-            ☐ Send via email
+            ✔ Generate token @done(18-11-21 14:03)
+            ✔ Insert it into db @done(18-11-21 14:03)
+            ✔ Send via email @done(18-11-21 14:03)
         'Forgot password':
             ☐ Generate token for resetting password
             ☐ Insert token into db
