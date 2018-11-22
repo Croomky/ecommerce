@@ -23,20 +23,20 @@
               <a class="nav-link" href="{% url 'signout' %}">Logout <i class="fas fa-sign-out-alt"></i></a>
             </li>
           {% else %}
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'signup' %}">Sign Up <i class="fas fa-user-plus"></i></a>
-            </li>
             <li class="nav-item dropdown">
               <a class="nav-link " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Sign In <i class="fas fa-sign-in-alt"></i>
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <form action="{% url 'signin' %}" method="POST">
+                <form action="{% url 'signin' %}" method="POST" class="login-form">
                   {% csrf_token %}
                   {{ loginForm.as_p }}
-                  <button type="submit">Sign up</button>
+                  <button class="btn login-btn" type="submit">Sign up</button>
                 </form>
               </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'signup' %}">Sign Up <i class="fas fa-user-plus"></i></a>
             </li>
           {% endif %}
         </ul>
@@ -54,7 +54,7 @@ header {
 nav {
   width: 100%;
   margin: 0px;
-  padding: 0px;
+  padding-right: 20px;
   border-bottom: 1px #577399 solid;
 }
 
@@ -85,5 +85,27 @@ a {
 
 a:hover {
   text-decoration: none;
+}
+
+.dropdown-menu {
+  width: 300px;
+  background-color: #f7f7ff;
+}
+
+.login-form {
+  margin: 10px;
+}
+
+.login-btn {
+  color: #f7f7ff;
+  background-color: #577399;
+  margin-left: 10px;
+  font-weight: 500;
+  padding-bottom: 6px;
+}
+
+.nav-item {
+  /* margin: 10px; */
+  min-width: 100px;
 }
 </style>

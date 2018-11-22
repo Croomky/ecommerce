@@ -1,7 +1,32 @@
+{% extends 'ecommerce/base.html' %}
 
-<h2>Sign up</h2>
-<form method="POST">
-{% csrf_token %}
-{{ form.as_p }}
-<button type="submit">Sign up</button>
-</form>
+{% block content %}
+<div class="offset-3 col-6">
+  <h2>Sign up</h2>
+  <form method="POST">
+    {% csrf_token %}
+    {% for field in form %}
+      <div class="form-group justify-content-left">
+        {{ field.errors }}
+        <label for="{{ field.id_for_label }}" class="signup-label">{{ field.label }}</label>
+        <input class="form-control" id="{{ field.id_for_label }}" maxlength="30" name="{{ field.html_name }}" value="{{ field.value }}" palceholder="{{ field.palceholder }}" type="text" />
+      </div>
+    {% endfor %}
+    <button type="submit" class="btn custom-btn">Sign up</button>
+  </form>
+</div>
+{% endblock %}
+
+<style>
+.custom-btn {
+  color: #f7f7ff;
+  background-color: #577399;
+  margin-left: 10px;
+  font-weight: 500;
+  padding-bottom: 6px;
+}
+
+.signup-label {
+  float: left;
+}
+</style>

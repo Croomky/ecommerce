@@ -1,13 +1,13 @@
 from django.contrib.auth import login, authenticate, logout
-from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .components import SendActivationLink
 from .models import ActivationCode
+from .forms import UserSignupForm
 
 def signup(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = UserSignupForm(request.POST)
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
@@ -19,7 +19,7 @@ def signup(request):
         else:
             return redirect('signup')
     elif request.method == 'GET':
-        form = UserCreationForm()
+        form = UserSignupForm()
         return render(request, 'UserManager/signup.html', {'form': form})
 
 def signin(request):
@@ -34,8 +34,11 @@ def signin(request):
 
 def activate(request, code):
     currentCode = ActivationCode.objects.get(code=code)
-    currentCode.delete()
-    return HttpResponse('Your account was activated')
+    if currentCode is not None:
+        currentCode.delete()
+        return HttpResponse('Your account was activated')
+    else:
+        return HttpResponse('Something went wrong')
 
 def userProfile(request):
     return HttpResponse('Your profile')
