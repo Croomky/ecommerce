@@ -1,4 +1,5 @@
 from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .components import SendActivationLink
@@ -26,6 +27,9 @@ def signin(request):
     if request.method == 'POST':
         username = request.POST['login']
         password = request.POST['password']
+        if username.find('@') != -1:
+            username = User.objects.get(email=username).username
+
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
