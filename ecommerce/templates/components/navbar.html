@@ -30,7 +30,12 @@
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <form action="{% url 'signin' %}" method="POST" class="login-form">
                   {% csrf_token %}
-                  {{ loginForm.as_p }}
+                  <label for="id_login">Username or email:</label>
+                  <input type="text" name="login" class="form-control" maxlength="30" required="" id="id_login">
+
+                  <label for="id_password">Password:</label>
+                  <input type="password" name="password" class="form-control" required="" id="id_password">
+
                   <button class="btn login-btn" type="submit">Sign up</button>
                 </form>
               </div>

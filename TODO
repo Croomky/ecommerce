@@ -13,7 +13,7 @@ Ecommerce API:
             ✔ Save new user to db @done(18-11-16 17:23)
             ✔ Send activation link @done(18-11-21 14:02)
         Login user:
-            ☐ Authenticate using (email or login) and password
+            ✔ Authenticate using (email or login) and password @done(18-11-24 15:49)
             ✔ Start session @done(18-11-21 14:02)
         Activate new account by email:
             ✔ Generate token @done(18-11-21 14:03)
