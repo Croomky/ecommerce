@@ -1,5 +1,6 @@
-from django.shortcuts import render
-from django.http import JsonResponse
+from django.shortcuts import render, redirect
+from django.http import JsonResponse, HttpResponse
+from django.core.exceptions import ObjectDoesNotExist
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.renderers import JSONRenderer
@@ -31,3 +32,13 @@ class FeaturedProducts(APIView):
         featuredProducts = Product.objects.get(pk=featuredFk)
         serializer = ProductSerializer(featuredProducts, many=True)
         return JsonResponse(serializer.data, safe=False)
+
+class ProductDetails(APIView):
+    def get(self, request, pk):
+        try:
+            product = Product.objects.get(pk=pk)
+        except ObjectDoesNotExist:
+            return redirect('mainPage')
+
+        print(product.name)
+        return render(request, 'ProductManager/productDetails.html', {'product': product})

@@ -1,0 +1,19 @@
+{% extends 'ecommerce/base.html' %}
+
+{% block content %}
+<div id="product-details">
+    <div class="container">
+        <div class="row">
+            <div class="col-3">
+                {{ product.thumbnail }}
+            </div>
+            <div class="col-9">
+                {{ product.name }}
+            </div>
+        </div>
+        <div class="row">
+            {{ product.body }}
+        </div>
+    </div>
+</div>
+{% endblock %}
