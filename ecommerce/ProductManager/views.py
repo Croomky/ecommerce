@@ -40,5 +40,4 @@ class ProductDetails(APIView):
         except ObjectDoesNotExist:
             return redirect('mainPage')
 
-        print(product.name)
         return render(request, 'ProductManager/productDetails.html', {'product': product})

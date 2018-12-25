@@ -1,5 +1,7 @@
+from os import path 
 from django.db import models
 from django.contrib import admin
+from ecommerce.settings import STATIC_ROOT
 
 class Category(models.Model):
     name = models.CharField(max_length=100)
@@ -11,14 +13,18 @@ class Category(models.Model):
 
 class Product(models.Model):
     name = models.CharField(max_length=200)
-    description = models.TextField(max_length=1000)# short description of product
-    thumbnail = models.ImageField()
+    description = models.TextField(max_length=1000)# short description of a product
+    thumbnail = models.ImageField(upload_to=path.join(STATIC_ROOT, "img"))
     price = models.FloatField()
-    avaialableAmt = models.FloatField()
-    body = models.TextField(max_length=5000)# actual text appearing on product detail site
+    availableAmt = models.FloatField()
+    body = models.TextField(max_length=5000)# actual text appearing on a product detail site
+    category = models.ForeignKey(Category, on_delete=models.SET_NULL, blank=True, null=True)
     
     def __str__(self):
         return self.name
+    
+    def get_thumbnail_name(self):
+        return path.basename(path.normpath(self.thumbnail.name))
 
 class Image(models.Model):
     img = models.ImageField()

@@ -9,3 +9,5 @@ media
 vdjango/
 .vscode/
 TODO
+
+venv/

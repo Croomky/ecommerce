@@ -1,19 +1,83 @@
 {% extends 'ecommerce/base.html' %}
 
+{% load static %}
 {% block content %}
 <div id="product-details">
     <div class="container">
-        <div class="row">
+        <div class="row product-header">
             <div class="col-3">
-                {{ product.thumbnail }}
+                <img class="product-image" src="{% static product.get_thumbnail_name %}">
             </div>
-            <div class="col-9">
-                {{ product.name }}
+            <div class="col-9 text-left">
+                <div class="description-box float-left">
+                    <h4 class="product-name">{{ product.name }}</h4>
+                    <p class="product-description">{{ product.description }}</p>
+                </div>
+
+                <div class="price-box float-right">
+                    <p class="stock-amount">W magazynie: {{ product.availableAmt }}</p>
+                    <p class="product-price">{{ product.price }} zł</p>
+                </div>
             </div>
         </div>
         <div class="row">
-            {{ product.body }}
+            <div class="product-body">
+                    {{ product.body }}
+            </div>
         </div>
     </div>
 </div>
+
+<style>
+#product-details {
+    margin: 30px 20px 0 20px;
+}
+
+.container {
+    width: 100%;
+    margin: 0;
+}
+
+.product-header {
+    background-color: #bdd5ea;
+    padding: 20px 0 20px 0;
+}
+
+.product-image {
+    max-width: 100%;
+}
+
+.description-box {
+    height: 100%;
+}
+
+.product-name {
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.product-description {
+    font-size: 110%;
+}
+
+.price-box {
+    font-family: Roboto;
+}
+
+.stock-amount {
+    font-size: 70%;
+    font-weight: 500;
+    color: black;
+    margin-bottom: 3px;
+}
+
+.product-price {
+    font-size: 200%;
+    font-weight: 600;
+}
+
+.product-body {
+    padding: 20px 30px 0 30px;
+}
+</style>
 {% endblock %}
