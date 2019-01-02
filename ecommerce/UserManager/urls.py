@@ -7,4 +7,5 @@ urlpatterns = [
     path('activate/<code>', views.activate),
     path('profile', views.userProfile, name='profile'),
     path('signout', views.signout, name='signout'),
+    path('profile-info', views.ProfileInfo.as_view(), name='profileInfo'),
 ]

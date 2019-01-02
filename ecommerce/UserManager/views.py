@@ -2,6 +2,7 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from rest_framework.views import APIView
 from .components import SendActivationLink
 from .models import ActivationCode
 from .forms import UserSignupForm
@@ -45,8 +46,15 @@ def activate(request, code):
         return HttpResponse('Something went wrong')
 
 def userProfile(request):
-    return HttpResponse('Your profile')
+    if request.user != None:
+        return render(request, 'UserManager/userProfile.html')
+    else:
+        return redirect('mainPage')
 
 def signout(request):
     logout(request)
     return redirect('mainPage')
+
+class ProfileInfo(APIView):
+    def post(self, request):
+        pass

@@ -1,5 +1,7 @@
 {% extends 'ecommerce/base.html' %}
 
 {% block content %}
+{% with featuredProducts=featuredProducts %}
 {% include "../components/featuredProduct.html" %}
+{% endwith %}
 {% endblock %}

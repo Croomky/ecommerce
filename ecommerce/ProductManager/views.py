@@ -5,7 +5,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.renderers import JSONRenderer
 from .models import Category, FeaturedProduct, Product
-from .serializers import CategorySerializer, ProductSerializer
+from .serializers import CategorySerializer, ProductSerializer, ProductListItemSerializer
 
 class CategoryList(APIView):
     def get(self, request):
@@ -41,3 +41,20 @@ class ProductDetails(APIView):
             return redirect('mainPage')
 
         return render(request, 'ProductManager/productDetails.html', {'product': product})
+
+# class SearchProduct(APIView):
+#     def post(self, request, query):
+#         product_list = Product.objects.raw('''SELECT id
+#             FROM ProductManager_product
+#             WHERE name LIKE '%\%s%'
+#             ''', [query])
+#         print('PRODUCT LIST:\n' + str(product_list))
+
+class ProductList(APIView):
+    def post(self, request, format=None):
+        query = '%' + request.POST["query"] + '%'
+        product_list = Product.objects.raw("SELECT id, name, price FROM ProductManager_product WHERE name LIKE %s",
+            [query],
+        )
+
+        return render(request, 'ProductManager/productList.html', {'products': product_list})

@@ -40,3 +40,4 @@ class FeaturedProduct(models.Model):
 admin.site.register(Category)
 admin.site.register(Product)
 admin.site.register(Image)
+admin.site.register(FeaturedProduct)

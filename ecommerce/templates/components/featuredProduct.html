@@ -1,9 +1,18 @@
-<div class="featured-product col-2">
-    <img src="img/dev/creatine.jpg" height="250" width="200"/>
-    <h4>Kreatynka Premium</h4>
-    <h4>29,99 zł</h4>
+{% load static %}
+{% for product in featuredProducts %}
+<div class="featured-product col-3 float-left text-left">
+    <img class="product-thumbnail" src="{% static product.get_thumbnail_name %}"/>
+    <h4>{{ product.name }}</h4>
+    <h4 class="product-price">{{ product.price }} zł</h4>
 </div>
+{% endfor %}
 
 <style>
-    
+.featured-product {
+    /* background-color: #bdd5ea; */
+}
+
+.product-thumbnail {
+    max-width: 100%;
+}
 </style>
